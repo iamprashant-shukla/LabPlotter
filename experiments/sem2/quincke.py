@@ -1,8 +1,8 @@
 from core.plotter import plot_xy
 
 
-def four_probe_experiment():
-    print("\nFour Probe Method – Band Gap")
+def quincke_experiment():
+    print("\nQuincke’s Method – Susceptibility")
 
     while True:
         try:
@@ -13,21 +13,21 @@ def four_probe_experiment():
         except ValueError:
             print("❌ Invalid input")
 
-    inv_t, ln_rho = [], []
+    H, h = [], []
 
     for i in range(n):
         while True:
             try:
-                inv_t.append(float(input(f"1/T × 10³ [{i+1}]: ")))
-                ln_rho.append(float(input(f"ln(ρ) [{i+1}]: ")))
+                H.append(float(input(f"Magnetic Field H [{i+1}]: ")))
+                h.append(float(input(f"Rise in liquid level h [{i+1}]: ")))
                 break
             except ValueError:
                 print("❌ Enter numeric values only")
 
     plot_xy(
-        inv_t, ln_rho,
-        "1/T × 10³ (K⁻¹)",
-        "ln(ρ)",
-        "Band Gap by Four Probe Method",
-        "four_probe.png"
+        H, h,
+        "Magnetic Field H",
+        "Rise in Liquid Level h",
+        "Quincke’s Method",
+        "quincke.png"
     )

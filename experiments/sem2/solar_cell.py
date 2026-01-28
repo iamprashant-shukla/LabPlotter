@@ -1,8 +1,8 @@
 from core.plotter import plot_xy
 
 
-def four_probe_experiment():
-    print("\nFour Probe Method – Band Gap")
+def solar_cell_experiment():
+    print("\nSolar Cell I–V Characteristics")
 
     while True:
         try:
@@ -13,21 +13,21 @@ def four_probe_experiment():
         except ValueError:
             print("❌ Invalid input")
 
-    inv_t, ln_rho = [], []
+    voltage, current = [], []
 
     for i in range(n):
         while True:
             try:
-                inv_t.append(float(input(f"1/T × 10³ [{i+1}]: ")))
-                ln_rho.append(float(input(f"ln(ρ) [{i+1}]: ")))
+                voltage.append(float(input(f"Voltage (V) [{i+1}]: ")))
+                current.append(float(input(f"Current (mA) [{i+1}]: ")))
                 break
             except ValueError:
                 print("❌ Enter numeric values only")
 
     plot_xy(
-        inv_t, ln_rho,
-        "1/T × 10³ (K⁻¹)",
-        "ln(ρ)",
-        "Band Gap by Four Probe Method",
-        "four_probe.png"
+        voltage, current,
+        "Voltage (V)",
+        "Current (mA)",
+        "Solar Cell I–V Curve",
+        "solar_cell_iv.png"
     )
